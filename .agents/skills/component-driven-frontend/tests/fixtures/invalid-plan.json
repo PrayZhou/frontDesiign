@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "designIntent": {
+    "product": "Analytics workspace",
+    "audience": "Operations teams",
+    "visualDirection": "Clear and calm",
+    "density": "comfortable",
+    "principles": ["Prioritize scanned information"]
+  },
+  "foundation": ["shadcn", "mantine"],
+  "enhancer": ["recharts", "visx"],
+  "dependencies": [{ "name": "recharts", "reason": "Charts", "new": "false" }],
+  "regions": [
+    {
+      "id": "custom-chart",
+      "need": "Show trends",
+      "capabilities": ["data", "interactive"],
+      "selection": { "source": "custom" },
+      "reason": "No existing component matches.",
+      "states": ["success"],
+      "responsive": "Resize to fit.",
+      "accessibility": {}
+    }
+  ]
+}

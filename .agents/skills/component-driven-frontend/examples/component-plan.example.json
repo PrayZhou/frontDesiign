@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "designIntent": {
+    "product": "SaaS operations dashboard",
+    "audience": "Customer-success and operations teams",
+    "coreTask": "Review account health, investigate renewal risk, and respond to customer feedback.",
+    "visualDirection": "Calm, information-forward workspace with restrained emphasis for actionable risk.",
+    "density": "comfortable",
+    "principles": [
+      "Make account health scannable before inviting drill-down.",
+      "Reserve motion and visual effects for meaningful attention changes."
+    ]
+  },
+  "foundation": "shadcn",
+  "enhancer": "magicui",
+  "dependencies": [
+    {
+      "name": "@magicui/animated-list",
+      "reason": "Show newly received customer feedback with a subtle, non-blocking entrance.",
+      "new": true
+    }
+  ],
+  "regions": [
+    {
+      "id": "workspace-navigation",
+      "need": "Move between dashboard views and account segments.",
+      "capabilities": ["navigation", "interactive"],
+      "selection": { "source": "foundation", "component": "sidebar" },
+      "reason": "The shadcn sidebar keeps primary navigation consistent with the dashboard shell.",
+      "states": ["default"],
+      "responsive": "Collapse to a labelled sheet trigger below the tablet breakpoint while preserving the active destination.",
+      "accessibility": {
+        "keyboard": "Tab reaches the menu trigger and each navigation link; Enter activates the selected destination.",
+        "focus": "Every link and the compact menu trigger retain a high-contrast visible focus indicator.",
+        "semantics": "Wrap links in a nav landmark and mark the current destination with aria-current."
+      }
+    },
+    {
+      "id": "summary-metrics",
+      "need": "Scan retention, active-account, and at-risk-account totals before investigating details.",
+      "capabilities": ["data", "async", "metrics"],
+      "selection": { "source": "foundation", "component": "card" },
+      "reason": "Shadcn cards provide a stable, aligned container for concise metric summaries.",
+      "states": ["loading", "empty", "error", "success"],
+      "responsive": "Use a four-column grid on wide screens, two columns on tablet, and a single readable column on mobile.",
+      "accessibility": {
+        "keyboard": "Metric cards are not focusable unless a card exposes a real drill-down action.",
+        "focus": "Any drill-down control inside a card has the standard visible focus treatment.",
+        "semantics": "Associate each metric value with its label and announce loading or error status in a live region."
+      }
+    },
+    {
+      "id": "account-health-table",
+      "need": "Sort and inspect accounts that need a renewal or adoption follow-up.",
+      "capabilities": ["data", "async", "table", "interactive"],
+      "selection": { "source": "foundation", "component": "data-table" },
+      "reason": "The shadcn data-table pattern supports sortable columns and reusable row actions without adding another foundation.",
+      "states": ["loading", "empty", "error", "success"],
+      "responsive": "Keep account and risk columns visible, move secondary columns behind a details disclosure, and allow contained horizontal scrolling as a fallback.",
+      "accessibility": {
+        "keyboard": "Tab reaches sort controls, filters, row actions, and pagination; Enter or Space activates buttons.",
+        "focus": "Sort controls, filters, and row actions preserve a visible focus ring in every table state.",
+        "semantics": "Use native table headers with sortable-column labels and describe the current sort order."
+      }
+    },
+    {
+      "id": "customer-feedback",
+      "need": "Notice newly received customer feedback and open the relevant account context.",
+      "capabilities": ["feedback", "interactive"],
+      "selection": { "source": "enhancer", "component": "animated-list" },
+      "reason": "Magic UI adds a restrained entrance for newly received feedback while shadcn remains the foundation for surrounding controls.",
+      "states": ["default", "success", "error"],
+      "responsive": "Place the feed below the summary on small screens and limit visible item text to prevent horizontal overflow.",
+      "accessibility": {
+        "keyboard": "Each feedback item action is reachable in reading order and opens with Enter or Space.",
+        "focus": "Feedback actions retain visible focus without relying on motion to indicate selection.",
+        "semantics": "Use a labelled list; announce new feedback with a polite live region and provide an equivalent non-animated update."
+      }
+    }
+  ]
+}
