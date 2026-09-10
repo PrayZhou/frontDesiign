@@ -47,6 +47,8 @@ See a complete, strict-mode-valid SaaS dashboard contract at [`.agents/skills/co
 
 Candidate `relevanceScore` ranks literal query matches for discovery. It is not the separate 100-point final-fit assessment described in the component-selection guide.
 
+The Skill's [visual-language guide](.agents/skills/component-driven-frontend/references/visual-language.md) turns an approved direction into explicit shape, material, and interaction systems. It prevents both boxed-page repetition and indiscriminate glass/motion while requiring real state feedback for core product demonstrations.
+
 ## Extend registry support
 
 To add a Registry-compatible adapter, normalize its obtained item into the full stable Candidate shape documented in `references/component-selection.md`, including nullable `installCommand` and `docsUrl`, discovery-only `relevanceScore`, and warnings. Do not embed a static catalog: Registry data changes, and selection must remain tied to available source truth.

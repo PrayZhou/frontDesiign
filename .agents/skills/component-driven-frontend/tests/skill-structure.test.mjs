@@ -10,6 +10,7 @@ const readmePath = path.resolve(skillRoot, '..', '..', '..', 'README.md');
 
 const requiredPaths = [
   'references/design-intent.md',
+  'references/visual-language.md',
   'references/component-selection.md',
   'references/source-adapters.md',
   'references/composition-patterns.md',

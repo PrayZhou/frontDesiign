@@ -22,6 +22,7 @@ Skill 的核心价值不是维护“好看组件清单”，而是提供一个�
 7. Skill 明确处理动态查询失败、Registry 不可用、组件冲突、未知依赖和无浏览器环境等情况。
 8. Skill 包含可运行的自动化测试、离线 fixtures 和手动场景验证说明。
 9. 纯逻辑 React 缺陷和无需组件系统判断的单行样式修改不触发完整工作流；只有确实涉及 Token、variant、组件或无障碍判断的有界修改才走轻量路径。
+10. Skill 将视觉方向落实为可审查的形态、材质和交互系统，避免整页重复方框、无层级玻璃态，以及只用整块淡入代替核心产品交互。
 
 ## 3. 非目标
 
@@ -71,6 +72,7 @@ Skill 的核心价值不是维护“好看组件清单”，而是提供一个�
 ├── SKILL.md
 ├── references/
 │   ├── design-intent.md
+│   ├── visual-language.md
 │   ├── component-selection.md
 │   ├── source-adapters.md
 │   ├── composition-patterns.md
@@ -114,6 +116,7 @@ Skill 的核心价值不是维护“好看组件清单”，而是提供一个�
 - 目标用户与信息密度；
 - 视觉方向与明确要避免的模板化特征；
 - 字体、色彩、圆角、阴影、间距、动效原则；
+- 形态层级、材质深度、交互触发与降级边界；
 - 响应式与无障碍基线。
 
 已有品牌规范、设计 Tokens、Figma 或 Code Connect 的优先级高于 Skill 默认偏好。
@@ -187,7 +190,9 @@ node query-components.mjs --source <project|shadcn|magicui|aceternity|registry-f
 
 - 项目自身的 lint、typecheck、test、build 中可用的项目命令；
 - 关键交互状态；
+- hover、press、focus、滚动揭示和异步状态连续性；
 - 桌面端与移动端渲染；
+- 圆角层级、无必要框线、玻璃背景/回退、模糊成本与文字对比度；
 - 溢出、遮挡、对比度、焦点和减弱动效；
 - 与 Design Intent 和 Component Plan 的一致性。
 
@@ -258,7 +263,7 @@ node query-components.mjs --source <project|shadcn|magicui|aceternity|registry-f
 最终交付包括：
 
 - 完整的 `.agents/skills/component-driven-frontend/`；
-- 五份按需引用的设计与实现规则；
+- 六份按需引用的设计与实现规则；
 - 三个可直接运行的 Node.js CLI；
 - 自动化测试与离线 fixtures；
 - 根目录 README，说明安装到项目或个人 Skills 目录的方法、命令示例和扩展新组件源的方式；
