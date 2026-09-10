@@ -1,0 +1,177 @@
+{
+  "version": 1,
+  "designIntent": {
+    "product": "A marketing homepage for Axiom, an AI agent platform that researches, analyzes, and executes multi-step work.",
+    "audience": "High-performance individual contributors and startup teams.",
+    "coreTask": "Let a qualified visitor immediately try a deterministic product preview and understand the path from objective to outcome.",
+    "visualDirection": "Softly rounded, cinematic graphite interface with warm-white typography, one electric-cyan signal color, and selective glass depth around navigation, product previews, and conversion surfaces; no generic purple glow, indiscriminate glass-card collage, or decorative bento grid.",
+    "density": "comfortable",
+    "principles": [
+      "The working product preview leads the first viewport.",
+      "Every accent color and motion cue communicates state.",
+      "Control, panel, and shell radii form a visible hierarchy instead of repeating one hard rectangle.",
+      "Glass is reserved for meaningful elevated layers and always has an opaque fallback.",
+      "Research, analysis, and execution read as one connected workflow.",
+      "Mobile preserves the desktop narrative in a single semantic order.",
+      "Keyboard access, visible focus, reflow, contrast, and reduced motion are release requirements."
+    ]
+  },
+  "foundation": "shadcn/ui",
+  "enhancer": null,
+  "dependencies": [
+    {
+      "name": "react",
+      "reason": "Typed component architecture and deterministic interactive demo state.",
+      "new": true
+    },
+    {
+      "name": "tailwindcss",
+      "reason": "Design tokens, responsive composition, and reduced-motion styling.",
+      "new": true
+    },
+    {
+      "name": "lucide-react",
+      "reason": "Recognizable action and status icons that reinforce text labels.",
+      "new": true
+    },
+    {
+      "name": "motion",
+      "reason": "Purposeful gesture feedback, connected stage transitions, scroll-linked progress, and user-preference-aware reduced motion without introducing a second visual system.",
+      "new": true
+    }
+  ],
+  "regions": [
+    {
+      "id": "site-header",
+      "need": "Navigate the marketing story and reach the primary trial action on desktop or mobile.",
+      "capabilities": ["navigation", "interactive", "overlay"],
+      "selection": {
+        "source": "foundation",
+        "component": "Button and Sheet"
+      },
+      "reason": "The current official shadcn/ui catalog verifies Button and Sheet, and Sheet supplies the dialog semantics required by mobile navigation.",
+      "states": ["closed", "open"],
+      "responsive": "Inline links remain visible at desktop widths; at narrow widths they move into a right-side Sheet while the primary brand and menu trigger stay visible.",
+      "accessibility": {
+        "keyboard": "All links and controls follow document tab order; Escape closes the mobile sheet.",
+        "focus": "The menu trigger has a visible focus ring and focus returns to it after close.",
+        "semantics": "A nav landmark contains real anchor links; the menu trigger has an accessible name and the sheet has a title."
+      }
+    },
+    {
+      "id": "hero-task-composer",
+      "need": "Enter or select an objective and start the immediate product preview.",
+      "capabilities": ["marketing", "forms", "controls", "interactive"],
+      "selection": {
+        "source": "foundation",
+        "component": "Textarea, Button, and Badge"
+      },
+      "reason": "The current official shadcn/ui catalog verifies these form and label primitives; local composition preserves native textarea and button behavior while applying the approved control, panel, and shell radius hierarchy inside one glass product surface.",
+      "states": ["empty", "ready", "running", "complete"],
+      "responsive": "The composer fills its column on desktop and spans the mobile viewport with 44-pixel-minimum controls and wrapping sample-task choices.",
+      "accessibility": {
+        "keyboard": "Sample tasks and run action are native buttons; the textarea remains directly editable.",
+        "focus": "The primary page CTA moves visible focus to the textarea; disabled and running actions retain perceivable focus styling.",
+        "semantics": "The textarea has a persistent label and description, while run status is not encoded in placeholder text."
+      }
+    },
+    {
+      "id": "agent-run-preview",
+      "need": "Understand the agent's current stage, evidence, and finished output while a demo runs.",
+      "capabilities": ["data", "async", "feedback", "interactive"],
+      "selection": {
+        "source": "custom",
+        "component": "AgentRunPreview"
+      },
+      "reason": "A local typed state visualization owns no state and renders the page controller's AgentRunState; it exposes a textual step list, connected progress tracer, polite live status, source count, and expanding result summary. Tests cover all states, keyboard restart, reduced motion, and narrow reflow.",
+      "states": ["loading", "empty", "error", "success"],
+      "responsive": "A two-track console becomes a vertical ordered step list; decorative telemetry is reduced before any status text is hidden.",
+      "accessibility": {
+        "keyboard": "Restart is a native button and no status item is focusable unless it performs an action.",
+        "focus": "The restart action uses the shared visible focus treatment.",
+        "semantics": "An ordered list expresses progression and a polite live region announces only meaningful state transitions."
+      },
+      "customReason": "The signature connected agent-execution timeline is the product-specific hero evidence and no selected foundation primitive expresses its domain states as one visualization.",
+      "rejectedCandidates": [
+        "shadcn/ui Progress — verifies scalar completion but cannot communicate the named Research, Analyze, and Execute stages with their evidence and outputs."
+      ]
+    },
+    {
+      "id": "capability-sequence",
+      "need": "Explain how research, analysis, and execution combine into one workflow.",
+      "capabilities": ["marketing", "layout", "interactive"],
+      "selection": {
+        "source": "custom",
+        "component": "CapabilitySequence"
+      },
+      "reason": "A semantic ordered section uses shared tokens and icon-label pairs; a viewport-triggered line draw reveals the three stages as one connected process while preserving a fully visible reduced-motion state.",
+      "states": ["before-reveal", "revealed"],
+      "responsive": "The horizontal sequence becomes a vertical ordered narrative with the same content and DOM order.",
+      "accessibility": {
+        "keyboard": "The explanatory region adds no unnecessary tab stops.",
+        "focus": "Any embedded anchor uses the global visible focus treatment.",
+        "semantics": "A heading and ordered list communicate sequence independently of connectors or color."
+      },
+      "customReason": "This is marketing composition rather than a behavioral primitive; local semantic markup avoids importing a second visual system.",
+      "rejectedCandidates": [
+        "shadcn/ui Card — repeated isolated cards would weaken the required connected workflow narrative."
+      ]
+    },
+    {
+      "id": "workspace-demo",
+      "need": "Inspect a believable objective, execution plan, sources, and deliverables in one product surface.",
+      "capabilities": ["data", "async", "layout"],
+      "selection": {
+        "source": "custom",
+        "component": "WorkspaceDemo"
+      },
+      "reason": "A read-only local composition renders typed demo data into plan and output regions; one translucent outer workspace establishes product depth while quieter inner panels avoid nested-glass overload. Tests cover loading, empty, error, and success presentations plus mobile reading order.",
+      "states": ["loading", "empty", "error", "success"],
+      "responsive": "Side-by-side plan and output panels stack with objective and plan before deliverables; dense metadata wraps without horizontal page overflow.",
+      "accessibility": {
+        "keyboard": "The read-only surface introduces no tab stops except real artifact links.",
+        "focus": "Artifact links share the global focus ring and maintain a visible target at zoom.",
+        "semantics": "Named sections, ordered plan steps, textual status, and source labels preserve meaning without the visual grid."
+      },
+      "customReason": "The workspace is a product-specific composite view, while generic cards or tables would fragment its objective-to-output narrative.",
+      "rejectedCandidates": [
+        "shadcn/ui Card — useful as a primitive but insufficient as the product-specific plan and artifact workspace composition.",
+        "shadcn/ui Table — unnecessary for the small ordered dataset and less usable on narrow screens."
+      ]
+    },
+    {
+      "id": "evidence-use-cases-integrations",
+      "need": "Connect platform claims to useful outcomes and tool categories without fabricating customers or partnerships.",
+      "capabilities": ["marketing", "layout", "interactive"],
+      "selection": {
+        "source": "foundation",
+        "component": "Badge and Separator"
+      },
+      "reason": "The current official shadcn/ui catalog verifies Badge, Separator, and Button. Each scenario is mapped to a deterministic demo task so its native button can load and start the corresponding workflow in the existing composer.",
+      "states": ["default", "hover", "focus", "active"],
+      "responsive": "Evidence labels wrap, scenarios stack, and the integration strip becomes a multi-row list with no horizontal marquee dependency.",
+      "accessibility": {
+        "keyboard": "Each use-case action is a native button that activates with Enter or Space; static proof points add no tab stops.",
+        "focus": "Use-case buttons and links use the global visible focus treatment.",
+        "semantics": "Section headings and lists provide grouping; every use-case button names the workflow it starts, and icon marks are decorative when adjacent text names the category."
+      }
+    },
+    {
+      "id": "final-conversion",
+      "need": "Return an informed visitor to the immediate trial path.",
+      "capabilities": ["marketing", "interactive", "navigation"],
+      "selection": {
+        "source": "foundation",
+        "component": "Button"
+      },
+      "reason": "The verified foundation Button supplies consistent action states; a rounded translucent conversion surface visually returns to the hero material, and the action scrolls to and focuses the existing composer rather than inventing a second form.",
+      "states": ["default", "hover", "focus", "active"],
+      "responsive": "The CTA remains full-width only on small screens and does not become a sticky obstruction.",
+      "accessibility": {
+        "keyboard": "The native button activates with Enter or Space and moves focus predictably.",
+        "focus": "A high-contrast ring remains visible against the dark final section.",
+        "semantics": "The action label states the result: Start with a task."
+      }
+    }
+  ]
+}
