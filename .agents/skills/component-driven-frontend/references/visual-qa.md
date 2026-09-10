@@ -35,7 +35,9 @@ Render the same representative data and state at minimum in:
 
 Add intermediate/tablet, dark theme, localization, high zoom, or reduced motion when the product supports them or the change touches them. Wait for fonts and stable data; capture the full page plus close-ups where overflow or interaction matters. Keep screenshots tied to viewport and state names.
 
-Inspect each image for hierarchy, alignment, spacing rhythm, wrapping, clipping, scroll traps, overlay bounds, sticky collisions, contrast, focus visibility, content realism, and consistency with existing pages. Compare against supplied Figma/screenshots first, then Design Intent and Component Plan. Code inspection is not a screenshot.
+Inspect each image for hierarchy, alignment, spacing rhythm, shape tiers, unnecessary boxed regions, wrapping, clipping, scroll traps, overlay bounds, sticky collisions, contrast, focus visibility, content realism, and consistency with existing pages. For translucent surfaces, also inspect the backdrop at light and dark points, nested blur, edge treatment, text contrast, and the opaque fallback. Compare against supplied Figma/screenshots first, then Design Intent and Component Plan. Code inspection is not a screenshot.
+
+Exercise motion rather than judging only still images. Verify hover, press, focus-visible, viewport reveal, and state continuity where the region declares them. A static screenshot can prove layout, but it cannot prove pointer response, progress transitions, result expansion, touch parity, or reduced-motion behavior; record an interaction assertion, trace, or state-specific capture for those behaviors.
 
 ## Iterate by discrepancy
 
@@ -45,7 +47,7 @@ Inspect each image for hierarchy, alignment, spacing rhythm, wrapping, clipping,
 4. Recapture both desktop and mobile when shared layout/tokens changed.
 5. Repeat until no material discrepancy remains or a documented blocker requires user input.
 
-Do not “polish” by adding gradients, glass, glow, Bento, beams, shadows, or motion unless the Design Intent calls for that exact treatment.
+Do not “polish” by adding gradients, glass, glow, Bento, beams, shadows, rounded cards, or motion unless the Design Intent calls for that exact treatment. When it does, verify the full shape/material/interaction system from [visual language](visual-language.md), not merely the presence of the effect.
 
 ## Report truthfully
 

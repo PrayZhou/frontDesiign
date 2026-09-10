@@ -31,7 +31,7 @@ Never assume a named component exists. A project file, configured registry resul
 
    If no repository is available, label the stack and foundation as assumptions and defer exact component names. Read [source adapters](references/source-adapters.md) when choosing where to look.
 
-2. Read [design intent](references/design-intent.md). Resolve and briefly output:
+2. Read [design intent](references/design-intent.md) and [visual language](references/visual-language.md). Resolve shape, material, and interaction choices as part of the visual direction, then briefly output:
 
    ```text
    Design Intent
@@ -67,7 +67,7 @@ Never assume a named component exists. A project file, configured registry resul
 
    Fix every error and warning. Do not implement an invalid plan.
 
-6. Implement with the verified API and existing tokens. Read [composition patterns](references/composition-patterns.md) for the applicable page type. Inspect generated changes before accepting them.
+6. Implement with the verified API and existing tokens. Read [composition patterns](references/composition-patterns.md) for the applicable page type. Apply the approved shape, material, and interaction systems without turning every region into the same container. Inspect generated changes before accepting them.
 
 7. Run engineering checks and rendered review using [visual QA](references/visual-qa.md). Compare desktop and mobile output against the Design Intent and Component Plan, then iterate.
 
