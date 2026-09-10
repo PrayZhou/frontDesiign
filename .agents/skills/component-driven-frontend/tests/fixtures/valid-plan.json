@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "designIntent": {
+    "product": "Analytics workspace",
+    "audience": "Operations teams",
+    "coreTask": "Review current operational health and investigate changes",
+    "visualDirection": "Clear and calm",
+    "density": "comfortable",
+    "principles": ["Prioritize scanned information"]
+  },
+  "foundation": "shadcn",
+  "enhancer": null,
+  "dependencies": [
+    { "name": "recharts", "reason": "Chart rendering", "new": false }
+  ],
+  "regions": [
+    {
+      "id": "navigation",
+      "need": "Move between workspace sections",
+      "capabilities": ["navigation", "interactive"],
+      "selection": { "source": "foundation", "component": "tabs" },
+      "reason": "Existing foundation provides accessible tabs.",
+      "states": ["default"],
+      "responsive": "Collapse labels on small screens.",
+      "accessibility": {
+        "keyboard": "Arrow keys move between tabs.",
+        "focus": "The active tab receives visible focus.",
+        "semantics": "Use tablist, tab, and tabpanel roles."
+      }
+    },
+    {
+      "id": "metrics-table",
+      "need": "Review current operational metrics",
+      "capabilities": ["data", "async", "table"],
+      "selection": { "source": "foundation", "component": "table" },
+      "reason": "A table supports comparison across metrics.",
+      "states": ["loading", "empty", "error", "success"],
+      "responsive": "Allow horizontal scrolling on narrow screens.",
+      "accessibility": {
+        "keyboard": "Table actions are reachable with Tab.",
+        "focus": "Focused actions have a visible outline.",
+        "semantics": "Use table headers and row labels."
+      }
+    },
+    {
+      "id": "trend-chart",
+      "need": "Understand metric movement over time",
+      "capabilities": ["data", "chart"],
+      "selection": { "source": "project", "component": "line-chart" },
+      "reason": "The project wrapper uses the declared Recharts capability dependency.",
+      "states": ["loading", "empty", "error", "success"],
+      "responsive": "Keep the chart readable in a single column.",
+      "accessibility": {
+        "keyboard": "Chart controls are keyboard reachable.",
+        "focus": "Controls show visible focus.",
+        "semantics": "Provide a text summary beside the chart."
+      }
+    }
+  ]
+}

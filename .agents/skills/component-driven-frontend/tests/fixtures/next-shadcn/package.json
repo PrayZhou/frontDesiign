@@ -1,0 +1,12 @@
+{
+  "name": "next-shadcn-fixture",
+  "packageManager": "pnpm@9.0.0",
+  "dependencies": {
+    "next": "15.0.0",
+    "react": "19.0.0",
+    "lucide-react": "0.468.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "4.0.0"
+  }
+}

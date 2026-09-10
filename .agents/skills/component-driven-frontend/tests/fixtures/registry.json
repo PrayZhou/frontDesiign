@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "name": "animated-grid-pattern",
+      "type": "registry:component",
+      "description": "An animated grid background for a marketing hero section.",
+      "dependencies": ["framer-motion"],
+      "registryDependencies": ["@/components/magicui/animated-grid-pattern"]
+    },
+    {
+      "name": "hero-card",
+      "type": "registry:component",
+      "description": "A static marketing card for landing pages."
+    }
+  ]
+}
