@@ -24,7 +24,7 @@ Produce all six fields in a compact Design Intent:
 | `product` | Product/page type and business context |
 | `audience` | Primary users, environment, and relevant ability constraints |
 | `coreTask` | The single action or understanding the page must optimize |
-| `visualDirection` | 2–4 grounded qualities plus explicit boundaries |
+| `visualDirection` | 2–4 grounded qualities plus explicit shape, material, interaction, and effect boundaries |
 | `density` | `compact`, `comfortable`, or `spacious`, with a task-based reason |
 | `principles` | 3–5 testable rules covering hierarchy, responsiveness, and access |
 
@@ -34,8 +34,8 @@ Examples set boundaries, not templates: “calm operational workspace; dense tab
 
 - **Typography:** Keep the existing family unless brand evidence authorizes change. Define display/body/label roles, readable measures, and a limited weight range. Use size and spacing before decorative effects to establish hierarchy.
 - **Color:** Start from existing semantic tokens. Assign colors by purpose—surface, text, border, action, status—and verify contrast. Add a new accent only when it has a defined role.
-- **Spacing and shape:** Use the project's spacing and radius scales. Let content relationships determine gaps. Do not wrap every region in a large rounded container.
-- **Motion:** State purpose, trigger, duration character, and reduced-motion behavior. Prefer state continuity and feedback. Omit motion that merely announces the interface.
+- **Spacing, shape, and material:** Use the project's spacing and radius scales. Let content relationships determine gaps. Define surface depth and fallback behavior before using translucency or blur. Do not wrap every region in a large rounded container. Read [visual language](visual-language.md) when shape or material affects the direction.
+- **Interaction and motion:** State purpose, trigger, duration character, and reduced-motion behavior. Prefer state continuity and input feedback. A core product demonstration needs more than a whole-section fade. Read [visual language](visual-language.md) for the interaction inventory.
 - **Responsive/accessibility:** Identify reading order, collapse behavior, touch targets, focus visibility, semantics, zoom/reflow, and reduced motion before implementation.
 
 ## Reject generic AI UI

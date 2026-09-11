@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
-import { defineConfig } from 'vitest/config'
+import { configDefaults, defineConfig } from 'vitest/config'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -13,6 +13,7 @@ export default defineConfig({
   },
   test: {
     environment: 'jsdom',
+    exclude: [...configDefaults.exclude, '.agents/**'],
     setupFiles: ['./src/test/setup.ts'],
   },
 })
